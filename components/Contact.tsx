@@ -1,0 +1,84 @@
+
+import React from 'react';
+import { MessageCircle, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+export const Contact = () => {
+  return (
+    <section id="contacto" className="py-32 bg-white relative">
+      <div className="container mx-auto px-6">
+        <div className="bg-slate-900 rounded-[4rem] p-10 md:p-24 relative overflow-hidden text-white shadow-2xl flex flex-col items-center text-center">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-indigo-600/10 blur-[150px]"></div>
+          <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-blue-600/5 blur-[120px]"></div>
+          
+          <div className="max-w-4xl w-full relative z-10">
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="inline-block px-4 py-2 rounded-full bg-indigo-600/20 text-indigo-400 text-[10px] font-black tracking-widest uppercase mb-10 italic border border-indigo-500/30"
+            >
+              Consultoría Estratégica
+            </motion.div>
+            
+            <h3 className="text-5xl md:text-8xl font-black tracking-tighter mb-16 leading-[0.9]">
+              Potencie su <br /> 
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 italic">Visión Tecnológica.</span>
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full mb-16">
+              <motion.a 
+                href="https://wa.me/34900LUXR" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02 }}
+                className="relative group block md:col-span-2 mx-auto w-full max-w-2xl"
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2.5rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
+                <div className="relative flex flex-col sm:flex-row items-center gap-8 bg-slate-800/80 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-white/10 text-left">
+                  <div className="relative shrink-0">
+                    <div className="w-24 h-24 bg-gradient-to-tr from-blue-600 via-indigo-500 to-indigo-400 rounded-3xl flex items-center justify-center text-4xl font-black italic shadow-lg">MJ</div>
+                    <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-green-500 border-4 border-slate-800 rounded-full animate-pulse shadow-md"></div>
+                  </div>
+                  <div className="flex-grow">
+                    <h4 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">Inquiry Directo de Proyectos</h4>
+                    <p className="text-3xl font-black text-white group-hover:text-indigo-400 transition-colors">Línea Ejecutiva - CEO</p>
+                    <div className="flex items-center gap-2 mt-3 text-slate-400">
+                      <span className="text-[10px] font-bold uppercase tracking-widest">Atención directa con Marcelo Jara</span>
+                    </div>
+                  </div>
+                  <div className="shrink-0 w-16 h-16 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-indigo-600 transition-all">
+                    <MessageCircle size={32} className="text-indigo-400 group-hover:text-white" />
+                  </div>
+                </div>
+              </motion.a>
+
+              <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4">
+                {[
+                  { icon: Linkedin, name: 'LinkedIn', label: 'LuXR Corporativo' },
+                  { icon: Twitter, name: 'X / Twitter', label: 'Ecosistema LuXR' },
+                  { icon: Instagram, name: 'Instagram', label: 'Showroom Digital' }
+                ].map((item, i) => (
+                  <motion.a 
+                    key={i} 
+                    href="#" 
+                    whileHover={{ y: -8, backgroundColor: 'rgba(255, 255, 255, 0.05)', borderColor: '#4f46e5' }}
+                    className="flex items-center gap-6 bg-white/5 p-8 rounded-[2.5rem] border border-white/5 transition-all group"
+                  >
+                    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:to-indigo-600 transition-all">
+                      <item.icon size={28} className="text-slate-400 group-hover:text-white transition-colors" />
+                    </div>
+                    <div className="text-left">
+                      <h5 className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-0.5">{item.name}</h5>
+                      <p className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">{item.label}</p>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+            <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.5em] italic">Ingeniería Exclusiva para Visionarios Tecnológicos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
