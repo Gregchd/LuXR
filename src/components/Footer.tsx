@@ -1,16 +1,14 @@
 
 import React from 'react';
+import logoSvg from '../assets/logo.svg';
 
 export const Footer = () => {
   return (
     <footer className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-10 border-b border-slate-100 pb-16">
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-black text-xl italic">L</span>
-            </div>
-            <span className="text-2xl font-black tracking-tight text-slate-900">Lu<span className="text-indigo-600">XR</span></span>
+          <div className="flex items-center space-x-3">
+            <img src={logoSvg} alt="LuXR Logo" className="h-10 w-auto" />
           </div>
           <div className="flex gap-12">
             {['Privacidad', 'Condiciones', 'Prensa'].map((link) => (

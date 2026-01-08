@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useActiveSection } from '../hooks/useActiveSection';
+import logoSvg from '../assets/logo.svg';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,11 +46,8 @@ export const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'glass-light py-3 soft-shadow' : 'py-6'}`}>
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center space-x-2 cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center soft-shadow">
-            <span className="text-white font-black text-xl italic">L</span>
-          </div>
-          <span className="text-2xl font-black tracking-tight text-slate-900">Lu<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">XR</span></span>
+        <div className="flex items-center space-x-3 cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+          <img src={logoSvg} alt="LuXR Logo" className="h-10 w-auto" />
         </div>
 
         <div className="hidden md:flex items-center space-x-12">
