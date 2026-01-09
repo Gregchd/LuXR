@@ -1,70 +1,101 @@
 
 import React, { useState } from 'react';
-import { ArrowRight, ChevronDown, ChevronUp, X, Search, Layers, BarChart3, ExternalLink } from 'lucide-react';
+import { ArrowRight, ChevronDown, ChevronUp, X, Search, Layers, BarChart3, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [showAll, setShowAll] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // 👇 CONFIGURA TUS IMÁGENES AQUÍ - Agrega las rutas de tus imágenes en el array 'images'
   const allCases = [
     { 
-      title: 'Plataforma 3D Industrial', 
-      category: 'Inmobiliaria Premium', 
-      img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200',
-      challenge: 'Un gigante inmobiliario necesitaba una forma de vender propiedades de lujo aún no construidas a inversores internacionales sin requerir viajes físicos.',
-      solution: 'Desarrollamos un gemelo digital interactivo en WebGL capaz de renderizar interiores en tiempo real con iluminación fotorrealista directamente en el navegador.',
-      impact: 'Reducción del ciclo de venta en un 40% y captación de inversores en 12 países diferentes durante el primer mes.',
-      tech: ['React', 'Three.js', 'WebGL', 'Node.js']
+      title: 'VR Manager', 
+      category: 'Sistema de Control Centralizado', 
+      images: [
+        '/src/assets/yuyai1.png',
+        '/src/assets/yuyai2.png',
+        '/src/assets/yuyai3.png',
+        '/src/assets/yuyai4.png',
+      ],
+      challenge: 'Empresas necesitaban una forma de gestionar y monitorear múltiples experiencias de realidad virtual simultáneas a gran escala sin perder control centralizado.',
+      solution: 'Plataforma de gestión y monitoreo remoto con control maestro para inicio, pausa y control centralizado de múltiples visores VR. Incluye telemetría en vivo de batería, conexión y progreso del usuario en tiempo real, más capa social con feedback integrado.',
+      impact: 'Control total sobre experiencias VR masivas con monitoreo en tiempo real y conectividad social integrada.',
+      tech: ['VR Networking', 'Real-time Monitoring', 'Multi-user Sync']
     },
     { 
-      title: 'Showroom AR Alta Gama', 
-      category: 'E-commerce Luxury', 
-      img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1200',
-      challenge: 'Una marca de muebles de diseñador quería eliminar la duda del cliente sobre si el producto encajaría físicamente en sus espacios.',
-      solution: 'Implementamos una solución de Realidad Aumentada basada en la web que permite previsualizar muebles a escala 1:1 con precisión milimétrica.',
-      impact: 'Incremento del 25% en la tasa de conversión y una disminución del 15% en devoluciones de productos.',
-      tech: ['8th Wall', 'WebAR', 'React Native', 'AWS']
+      title: 'XR Museum', 
+      category: 'Preservación Cultural Inmersiva', 
+      images: [
+        'https://images.unsplash.com/photo-1578926078876-58b7f3e3f8f1?auto=format&fit=crop&q=80&w=1200',
+        // 👈 Agrega más URLs de imágenes aquí
+      ],
+      challenge: 'Preservar y exhibir el patrimonio arqueológico de la cultura Mochica de forma accesible y atractiva para el público masivo.',
+      solution: 'Experiencia inmersiva itinerante que digitaliza y exhibe artefactos con reconstrucción digital de alta precisión mediante fotogrametría. Presentado en el MALI (Museo de Arte de Lima) y Hay Festival.',
+      impact: 'Impacto comprobado en cientos de usuarios en ferias culturales a nivel nacional, democratizando el acceso al patrimonio cultural.',
+      tech: ['Photogrammetry', 'Mobile XR', 'Cultural Heritage']
     },
     { 
-      title: 'Ecosistema Operativo Pro', 
-      category: 'Manufactura 4.0', 
-      img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200',
-      challenge: 'Controlar líneas de producción masivas con software heredado fragmentado que causaba cuellos de botella informativos.',
-      solution: 'Creamos un dashboard centralizado de alto rendimiento con visualización de datos en tiempo real y alertas predictivas basadas en IA.',
-      impact: 'Mejora de la eficiencia operativa en un 32% y eliminación total de paradas no programadas por falta de datos.',
-      tech: ['Python', 'Golang', 'Kubernetes', 'D3.js']
+      title: 'OCT MR', 
+      category: 'Gemelo Digital Médico', 
+      images: [
+        'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200',
+        // 👈 Agrega más URLs de imágenes aquí
+      ],
+      challenge: 'Capacitar personal técnico en el uso de Tomógrafos de Coherencia Óptica sin riesgo de daño a equipos médicos costosos.',
+      solution: 'Gemelo digital interactivo en Realidad Mixta con desglose mecánico interactivo y simulación educativa. Permite visualización de principios de funcionamiento del hardware en entorno seguro.',
+      impact: 'Ganador de la Medalla de Oro 2025 en la Feria de Inventos de Ginebra. Entrenamiento sin riesgo de daño al equipo real.',
+      tech: ['Mixed Reality', 'Digital Twin', 'Medical Simulation']
     },
     { 
-      title: 'Seguridad Financiera App', 
-      category: 'Fintech Elite', 
-      img: 'https://images.unsplash.com/photo-1551288049-bbdaef8a28a1?auto=format&fit=crop&q=80&w=1200',
-      challenge: 'Garantizar transacciones de alto valor para una banca privada con los máximos estándares de privacidad y velocidad.',
-      solution: 'Arquitectura móvil nativa con cifrado de extremo a extremo y autenticación biométrica multinivel integrada en el hardware.',
-      impact: 'Cero brechas de seguridad reportadas en 2 años y una satisfacción del usuario de 4.9/5 en el segmento VIP.',
-      tech: ['Swift', 'Kotlin', 'Blockchain Core', 'Biometrics API']
+      title: 'Horizon VR', 
+      category: 'Entrenamiento Inmersivo', 
+      images: [
+        'https://images.unsplash.com/photo-1617802690658-1173a812650d?auto=format&fit=crop&q=80&w=1200',
+        // 👈 Agrega más URLs de imágenes aquí
+      ],
+      challenge: 'Formar técnicos en procedimientos operativos estándar de equipos médicos complejos sin acceso constante al hardware real.',
+      solution: 'Entorno de entrenamiento inmersivo en VR standalone con interacción háptica para simulación de procedimientos. Incluye exploración interna del tomógrafo mediante capas de visualización VR.',
+      impact: 'Formación técnica segura y efectiva con simulación de procedimientos operativos estándar en entorno controlado.',
+      tech: ['Oculus/Meta Quest', 'Procedural Training', 'Industrial VR']
     },
     { 
-      title: 'Portal Aeroespacial XR', 
-      category: 'Tecnología Avanzada', 
-      img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200',
-      challenge: 'Entrenamiento técnico para ensamblaje de satélites sin riesgo de dañar componentes multimillonarios.',
-      solution: 'Sistema de entrenamiento en Realidad Virtual con feedback háptico y tutoriales asistidos por IA para precisión quirúrgica.',
-      impact: 'Reducción de errores humanos en un 60% durante la fase de ensamblaje real.',
-      tech: ['Unity', 'C#', 'OpenXR', 'Azure AI']
-    },
-    { 
-      title: 'Logística Inteligente 5G', 
-      category: 'Infraestructura', 
-      img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200',
-      challenge: 'Optimización de rutas de distribución global en un entorno de cadena de suministro volátil.',
-      solution: 'Motor de optimización heurística que utiliza datos en tiempo real de flotas conectadas por 5G para re-rutado dinámico.',
-      impact: 'Ahorro del 18% en costos de combustible y mejora del 22% en tiempos de entrega final.',
-      tech: ['TypeScript', 'GraphQL', 'TensorFlow', 'PostgreSQL']
+      title: 'ChaskaSat', 
+      category: 'Dashboard Satelital', 
+      images: [
+        'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&q=80&w=1200',
+        // 👈 Agrega más URLs de imágenes aquí
+      ],
+      challenge: 'Monitorear y diagnosticar el estado de nanosatélites en tiempo real con datos técnicos complejos de forma accesible.',
+      solution: 'Aplicación móvil/web con panel de control y tarjetas informativas para sensores de presión, temperatura y posición. Incluye monitoreo de salud de sistemas críticos y centro de ayuda integrado para interpretación de datos técnicos.',
+      impact: 'Diagnóstico continuo del estado satelital con visualización de datos en tiempo real y soporte UX integrado.',
+      tech: ['Real-time Data', 'Telemetry Dashboard', 'Mobile App']
     }
   ];
 
   const visibleCases = showAll ? allCases : allCases.slice(0, 4);
+
+  const handleProjectClick = (project: any) => {
+    setSelectedProject(project);
+    setCurrentImageIndex(0); // Reset to first image when opening
+  };
+
+  const nextImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => 
+        prev === selectedProject.images.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? selectedProject.images.length - 1 : prev - 1
+      );
+    }
+  };
 
   return (
     <section id="casos" className="py-32 bg-slate-50/50">
@@ -93,11 +124,11 @@ export const Portfolio = () => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 key={c.title}
                 whileHover={{ y: -8 }}
-                onClick={() => setSelectedProject(c)}
+                onClick={() => handleProjectClick(c)}
                 className="group relative rounded-[3rem] overflow-hidden bg-white soft-shadow cursor-pointer border border-slate-100"
               >
                 <div className="aspect-[16/10] overflow-hidden">
-                  <img src={c.img} alt={c.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+                  <img src={c.images[0]} alt={c.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
                 </div>
                 <div className="p-10 flex justify-between items-center bg-white">
                   <div>
@@ -123,9 +154,49 @@ export const Portfolio = () => {
               <button onClick={() => setSelectedProject(null)} className="absolute top-6 right-6 z-20 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-900 hover:bg-indigo-600 hover:text-white transition-all soft-shadow">
                 <X size={20} />
               </button>
-              <div className="md:w-1/2 h-64 md:h-auto overflow-hidden">
-                <img src={selectedProject.img} alt={selectedProject.title} className="w-full h-full object-cover" />
+              
+              {/* Carousel de imágenes */}
+              <div className="md:w-1/2 h-64 md:h-auto overflow-hidden relative group">
+                <img 
+                  src={selectedProject.images[currentImageIndex]} 
+                  alt={`${selectedProject.title} - ${currentImageIndex + 1}`} 
+                  className="w-full h-full object-cover" 
+                />
+                
+                {/* Controles del carousel - solo si hay más de 1 imagen */}
+                {selectedProject.images.length > 1 && (
+                  <>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-900 hover:bg-indigo-600 hover:text-white transition-all opacity-0 group-hover:opacity-100"
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-900 hover:bg-indigo-600 hover:text-white transition-all opacity-0 group-hover:opacity-100"
+                    >
+                      <ChevronRight size={20} />
+                    </button>
+                    
+                    {/* Indicadores de imagen */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                      {selectedProject.images.map((_: any, idx: number) => (
+                        <button
+                          key={idx}
+                          onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(idx); }}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            idx === currentImageIndex 
+                              ? 'bg-white w-8' 
+                              : 'bg-white/50 hover:bg-white/75'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
+
               <div className="md:w-1/2 p-8 md:p-16 overflow-y-auto">
                 <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-4 block italic">Estudio de Caso LuXR</span>
                 <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-10 tracking-tight leading-none">{selectedProject.title}</h3>

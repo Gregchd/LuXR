@@ -3,6 +3,37 @@ import React from 'react';
 import { MessageCircle, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+// 👇 CONFIGURA TUS LINKS AQUÍ
+const CONTACT_CONFIG = {
+  whatsapp: {
+    url: 'https://wa.me/34900LUXR', // Cambia este número de WhatsApp
+    name: 'Marcelo Jara',
+    initials: 'MJ',
+    title: 'Línea Ejecutiva - CEO',
+    description: 'Atención directa con Marcelo Jara'
+  },
+  socialMedia: [
+    {
+      icon: Linkedin,
+      name: 'LinkedIn',
+      label: 'LuXR Corporativo',
+      url: 'https://www.linkedin.com/company/luxrdotpe/posts/?feedView=all' // 👈 Pon tu URL de LinkedIn aquí
+    },
+    {
+      icon: Twitter,
+      name: 'X / Twitter',
+      label: 'Ecosistema LuXR',
+      url: '#' // 👈 Pon tu URL de Twitter/X aquí
+    },
+    {
+      icon: Instagram,
+      name: 'Instagram',
+      label: 'Showroom Digital',
+      url: 'https://www.instagram.com/luxr.pe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' // 👈 Pon tu URL de Instagram aquí
+    }
+  ]
+};
+
 export const Contact = () => {
   return (
     <section id="contacto" className="py-32 bg-white relative">
@@ -27,7 +58,7 @@ export const Contact = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full mb-16">
               <motion.a 
-                href="https://wa.me/34900LUXR" 
+                href={CONTACT_CONFIG.whatsapp.url}
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
@@ -36,14 +67,14 @@ export const Contact = () => {
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2.5rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
                 <div className="relative flex flex-col sm:flex-row items-center gap-8 bg-slate-800/80 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-white/10 text-left">
                   <div className="relative shrink-0">
-                    <div className="w-24 h-24 bg-gradient-to-tr from-blue-600 via-indigo-500 to-indigo-400 rounded-3xl flex items-center justify-center text-4xl font-black italic shadow-lg">MJ</div>
+                    <div className="w-24 h-24 bg-gradient-to-tr from-blue-600 via-indigo-500 to-indigo-400 rounded-3xl flex items-center justify-center text-4xl font-black italic shadow-lg">{CONTACT_CONFIG.whatsapp.initials}</div>
                     <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-green-500 border-4 border-slate-800 rounded-full animate-pulse shadow-md"></div>
                   </div>
                   <div className="flex-grow">
                     <h4 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">Inquiry Directo de Proyectos</h4>
-                    <p className="text-3xl font-black text-white group-hover:text-indigo-400 transition-colors">Línea Ejecutiva - CEO</p>
+                    <p className="text-3xl font-black text-white group-hover:text-indigo-400 transition-colors">{CONTACT_CONFIG.whatsapp.title}</p>
                     <div className="flex items-center gap-2 mt-3 text-slate-400">
-                      <span className="text-[10px] font-bold uppercase tracking-widest">Atención directa con Marcelo Jara</span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest">{CONTACT_CONFIG.whatsapp.description}</span>
                     </div>
                   </div>
                   <div className="shrink-0 w-16 h-16 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-indigo-600 transition-all">
@@ -53,14 +84,12 @@ export const Contact = () => {
               </motion.a>
 
               <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4">
-                {[
-                  { icon: Linkedin, name: 'LinkedIn', label: 'LuXR Corporativo' },
-                  { icon: Twitter, name: 'X / Twitter', label: 'Ecosistema LuXR' },
-                  { icon: Instagram, name: 'Instagram', label: 'Showroom Digital' }
-                ].map((item, i) => (
+                {CONTACT_CONFIG.socialMedia.map((item, i) => (
                   <motion.a 
                     key={i} 
-                    href="#" 
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ y: -8, backgroundColor: 'rgba(255, 255, 255, 0.05)', borderColor: '#4f46e5' }}
                     className="flex items-center gap-6 bg-white/5 p-8 rounded-[2.5rem] border border-white/5 transition-all group"
                   >
