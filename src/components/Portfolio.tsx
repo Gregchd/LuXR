@@ -8,16 +8,19 @@ export const Portfolio = () => {
   const [showAll, setShowAll] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // 👇 CONFIGURA TUS IMÁGENES AQUÍ - Agrega las rutas de tus imágenes en el array 'images'
+  // 👇 CONFIGURA TUS IMÁGENES Y VIDEOS AQUÍ - Agrega las rutas en el array 'media'
+  // Para videos usa extensiones: .mp4, .webm, .mov
+  // Para imágenes usa: .jpg, .jpeg, .png, .gif, .webp
   const allCases = [
     { 
       title: 'VR Manager', 
       category: 'Sistema de Control Centralizado', 
-      images: [
+      media: [
         '/src/assets/yuyai1.png',
         '/src/assets/yuyai2.png',
         '/src/assets/yuyai3.png',
         '/src/assets/yuyai4.png',
+        // 👈 Puedes agregar videos así: '/src/assets/demo.mp4'
       ],
       challenge: 'Empresas necesitaban una forma de gestionar y monitorear múltiples experiencias de realidad virtual simultáneas a gran escala sin perder control centralizado.',
       solution: 'Plataforma de gestión y monitoreo remoto con control maestro para inicio, pausa y control centralizado de múltiples visores VR. Incluye telemetría en vivo de batería, conexión y progreso del usuario en tiempo real, más capa social con feedback integrado.',
@@ -27,9 +30,11 @@ export const Portfolio = () => {
     { 
       title: 'XR Museum', 
       category: 'Preservación Cultural Inmersiva', 
-      images: [
-        'https://images.unsplash.com/photo-1578926078876-58b7f3e3f8f1?auto=format&fit=crop&q=80&w=1200',
-        // 👈 Agrega más URLs de imágenes aquí
+      media: [
+        '/src/assets/museum1.png',
+        '/src/assets/museum2.png',
+        '/src/assets/museum3.png',
+        // 👈 Agrega más URLs de imágenes o videos aquí
       ],
       challenge: 'Preservar y exhibir el patrimonio arqueológico de la cultura Mochica de forma accesible y atractiva para el público masivo.',
       solution: 'Experiencia inmersiva itinerante que digitaliza y exhibe artefactos con reconstrucción digital de alta precisión mediante fotogrametría. Presentado en el MALI (Museo de Arte de Lima) y Hay Festival.',
@@ -39,9 +44,13 @@ export const Portfolio = () => {
     { 
       title: 'OCT MR', 
       category: 'Gemelo Digital Médico', 
-      images: [
-        'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200',
-        // 👈 Agrega más URLs de imágenes aquí
+      media: [
+        '/src/assets/oct1.png',
+        '/src/assets/oct2.png',
+        '/src/assets/oct3.png',
+        '/src/assets/oct4.png',
+        '/src/assets/oct5.mp4',
+        '/src/assets/oct6.mp4',
       ],
       challenge: 'Capacitar personal técnico en el uso de Tomógrafos de Coherencia Óptica sin riesgo de daño a equipos médicos costosos.',
       solution: 'Gemelo digital interactivo en Realidad Mixta con desglose mecánico interactivo y simulación educativa. Permite visualización de principios de funcionamiento del hardware en entorno seguro.',
@@ -51,9 +60,12 @@ export const Portfolio = () => {
     { 
       title: 'Horizon VR', 
       category: 'Entrenamiento Inmersivo', 
-      images: [
-        'https://images.unsplash.com/photo-1617802690658-1173a812650d?auto=format&fit=crop&q=80&w=1200',
-        // 👈 Agrega más URLs de imágenes aquí
+      media: [
+        '/src/assets/horizon1.png',
+        '/src/assets/horizon2.png',
+        '/src/assets/horizon3.png',
+        
+        // 👈 Agrega más URLs de imágenes o videos aquí
       ],
       challenge: 'Formar técnicos en procedimientos operativos estándar de equipos médicos complejos sin acceso constante al hardware real.',
       solution: 'Entorno de entrenamiento inmersivo en VR standalone con interacción háptica para simulación de procedimientos. Incluye exploración interna del tomógrafo mediante capas de visualización VR.',
@@ -63,9 +75,11 @@ export const Portfolio = () => {
     { 
       title: 'ChaskaSat', 
       category: 'Dashboard Satelital', 
-      images: [
-        'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&q=80&w=1200',
-        // 👈 Agrega más URLs de imágenes aquí
+      media: [
+        '/src/assets/cansat1.png',
+        '/src/assets/cansat2.png',
+        '/src/assets/cansat3.png',
+        // 👈 Agrega más URLs de imágenes o videos aquí
       ],
       challenge: 'Monitorear y diagnosticar el estado de nanosatélites en tiempo real con datos técnicos complejos de forma accesible.',
       solution: 'Aplicación móvil/web con panel de control y tarjetas informativas para sensores de presión, temperatura y posición. Incluye monitoreo de salud de sistemas críticos y centro de ayuda integrado para interpretación de datos técnicos.',
@@ -76,6 +90,12 @@ export const Portfolio = () => {
 
   const visibleCases = showAll ? allCases : allCases.slice(0, 4);
 
+  // Helper function to check if media is a video
+  const isVideo = (url: string) => {
+    const videoExtensions = ['.mp4', '.webm', '.mov', '.avi', '.mkv'];
+    return videoExtensions.some(ext => url.toLowerCase().endsWith(ext));
+  };
+
   const handleProjectClick = (project: any) => {
     setSelectedProject(project);
     setCurrentImageIndex(0); // Reset to first image when opening
@@ -84,7 +104,7 @@ export const Portfolio = () => {
   const nextImage = () => {
     if (selectedProject) {
       setCurrentImageIndex((prev) => 
-        prev === selectedProject.images.length - 1 ? 0 : prev + 1
+        prev === selectedProject.media.length - 1 ? 0 : prev + 1
       );
     }
   };
@@ -92,7 +112,7 @@ export const Portfolio = () => {
   const prevImage = () => {
     if (selectedProject) {
       setCurrentImageIndex((prev) => 
-        prev === 0 ? selectedProject.images.length - 1 : prev - 1
+        prev === 0 ? selectedProject.media.length - 1 : prev - 1
       );
     }
   };
@@ -127,8 +147,12 @@ export const Portfolio = () => {
                 onClick={() => handleProjectClick(c)}
                 className="group relative rounded-[3rem] overflow-hidden bg-white soft-shadow cursor-pointer border border-slate-100"
               >
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img src={c.images[0]} alt={c.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+                <div className="aspect-[16/12] overflow-hidden">
+                  {isVideo(c.media[0]) ? (
+                    <video src={c.media[0]} className="w-full h-full object-cover" muted loop playsInline />
+                  ) : (
+                    <img src={c.media[0]} alt={c.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100" />
+                  )}
                 </div>
                 <div className="p-10 flex justify-between items-center bg-white">
                   <div>
@@ -150,21 +174,32 @@ export const Portfolio = () => {
           <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-8">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-slate-900/60 backdrop-blur-md" />
             
-            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-5xl max-h-[90vh] bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row">
+            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-7xl max-h-[95vh] bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row">
               <button onClick={() => setSelectedProject(null)} className="absolute top-6 right-6 z-20 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-slate-900 hover:bg-indigo-600 hover:text-white transition-all soft-shadow">
                 <X size={20} />
               </button>
               
-              {/* Carousel de imágenes */}
-              <div className="md:w-1/2 h-64 md:h-auto overflow-hidden relative group">
-                <img 
-                  src={selectedProject.images[currentImageIndex]} 
-                  alt={`${selectedProject.title} - ${currentImageIndex + 1}`} 
-                  className="w-full h-full object-cover" 
-                />
+              {/* Carousel de imágenes y videos */}
+              <div className="md:w-3/5 h-96 md:h-auto overflow-hidden relative group bg-slate-100">
+                {isVideo(selectedProject.media[currentImageIndex]) ? (
+                  <video 
+                    src={selectedProject.media[currentImageIndex]} 
+                    className="w-full h-full object-contain"
+                    controls
+                    autoPlay
+                    loop
+                    muted
+                  />
+                ) : (
+                  <img 
+                    src={selectedProject.media[currentImageIndex]} 
+                    alt={`${selectedProject.title} - ${currentImageIndex + 1}`} 
+                    className="w-full h-full object-contain" 
+                  />
+                )}
                 
-                {/* Controles del carousel - solo si hay más de 1 imagen */}
-                {selectedProject.images.length > 1 && (
+                {/* Controles del carousel - solo si hay más de 1 media */}
+                {selectedProject.media.length > 1 && (
                   <>
                     <button 
                       onClick={(e) => { e.stopPropagation(); prevImage(); }}
@@ -179,9 +214,9 @@ export const Portfolio = () => {
                       <ChevronRight size={20} />
                     </button>
                     
-                    {/* Indicadores de imagen */}
+                    {/* Indicadores de media */}
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                      {selectedProject.images.map((_: any, idx: number) => (
+                      {selectedProject.media.map((_: any, idx: number) => (
                         <button
                           key={idx}
                           onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(idx); }}
@@ -197,7 +232,7 @@ export const Portfolio = () => {
                 )}
               </div>
 
-              <div className="md:w-1/2 p-8 md:p-16 overflow-y-auto">
+              <div className="md:w-2/5 p-8 md:p-12 overflow-y-auto">
                 <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-4 block italic">Estudio de Caso LuXR</span>
                 <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-10 tracking-tight leading-none">{selectedProject.title}</h3>
                 <div className="space-y-10">
