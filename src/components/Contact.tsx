@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 // 👇 CONFIGURA TUS LINKS AQUÍ
 const CONTACT_CONFIG = {
   whatsapp: {
-    url: 'https://wa.me/34900LUXR', // Cambia este número de WhatsApp
+    url: 'https://wa.me/51946411109', // Cambia este número de WhatsApp
     name: 'Marcelo Jara',
     initials: 'MJ',
     title: 'Línea Ejecutiva - CEO',

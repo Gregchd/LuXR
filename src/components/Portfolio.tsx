@@ -3,24 +3,47 @@ import React, { useState } from 'react';
 import { ArrowRight, ChevronDown, ChevronUp, X, Search, Layers, BarChart3, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Import all project assets
+import yuyai1 from '../assets/yuyai1.png';
+import yuyai2 from '../assets/yuyai2.png';
+import yuyai3 from '../assets/yuyai3.png';
+import yuyai4 from '../assets/yuyai4.png';
+
+import museum1 from '../assets/museum1.png';
+import museum2 from '../assets/museum2.png';
+import museum3 from '../assets/museum3.png';
+
+import oct1 from '../assets/oct1.png';
+import oct2 from '../assets/oct2.png';
+import oct3 from '../assets/oct3.png';
+import oct4 from '../assets/oct4.png';
+import oct5 from '../assets/oct5.mp4';
+import oct6 from '../assets/oct6.mp4';
+
+import horizon1 from '../assets/horizon1.png';
+import horizon2 from '../assets/horizon2.png';
+import horizon3 from '../assets/horizon3.png';
+
+import cansat1 from '../assets/cansat1.png';
+import cansat2 from '../assets/cansat2.png';
+import cansat3 from '../assets/cansat3.png';
+
 export const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [showAll, setShowAll] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // 👇 CONFIGURA TUS IMÁGENES Y VIDEOS AQUÍ - Agrega las rutas en el array 'media'
-  // Para videos usa extensiones: .mp4, .webm, .mov
-  // Para imágenes usa: .jpg, .jpeg, .png, .gif, .webp
+  // IMPORTANTE: Debes importar los assets arriba primero, luego usarlos aquí
   const allCases = [
     { 
       title: 'VR Manager', 
       category: 'Sistema de Control Centralizado', 
       media: [
-        '/src/assets/yuyai1.png',
-        '/src/assets/yuyai2.png',
-        '/src/assets/yuyai3.png',
-        '/src/assets/yuyai4.png',
-        // 👈 Puedes agregar videos así: '/src/assets/demo.mp4'
+        yuyai1,
+        yuyai2,
+        yuyai3,
+        yuyai4,
       ],
       challenge: 'Empresas necesitaban una forma de gestionar y monitorear múltiples experiencias de realidad virtual simultáneas a gran escala sin perder control centralizado.',
       solution: 'Plataforma de gestión y monitoreo remoto con control maestro para inicio, pausa y control centralizado de múltiples visores VR. Incluye telemetría en vivo de batería, conexión y progreso del usuario en tiempo real, más capa social con feedback integrado.',
@@ -31,10 +54,9 @@ export const Portfolio = () => {
       title: 'XR Museum', 
       category: 'Preservación Cultural Inmersiva', 
       media: [
-        '/src/assets/museum1.png',
-        '/src/assets/museum2.png',
-        '/src/assets/museum3.png',
-        // 👈 Agrega más URLs de imágenes o videos aquí
+        museum1,
+        museum2,
+        museum3,
       ],
       challenge: 'Preservar y exhibir el patrimonio arqueológico de la cultura Mochica de forma accesible y atractiva para el público masivo.',
       solution: 'Experiencia inmersiva itinerante que digitaliza y exhibe artefactos con reconstrucción digital de alta precisión mediante fotogrametría. Presentado en el MALI (Museo de Arte de Lima) y Hay Festival.',
@@ -45,12 +67,12 @@ export const Portfolio = () => {
       title: 'OCT MR', 
       category: 'Gemelo Digital Médico', 
       media: [
-        '/src/assets/oct1.png',
-        '/src/assets/oct2.png',
-        '/src/assets/oct3.png',
-        '/src/assets/oct4.png',
-        '/src/assets/oct5.mp4',
-        '/src/assets/oct6.mp4',
+        oct1,
+        oct2,
+        oct3,
+        oct4,
+        oct5,
+        oct6,
       ],
       challenge: 'Capacitar personal técnico en el uso de Tomógrafos de Coherencia Óptica sin riesgo de daño a equipos médicos costosos.',
       solution: 'Gemelo digital interactivo en Realidad Mixta con desglose mecánico interactivo y simulación educativa. Permite visualización de principios de funcionamiento del hardware en entorno seguro.',
@@ -61,11 +83,9 @@ export const Portfolio = () => {
       title: 'Horizon VR', 
       category: 'Entrenamiento Inmersivo', 
       media: [
-        '/src/assets/horizon1.png',
-        '/src/assets/horizon2.png',
-        '/src/assets/horizon3.png',
-        
-        // 👈 Agrega más URLs de imágenes o videos aquí
+        horizon1,
+        horizon2,
+        horizon3,
       ],
       challenge: 'Formar técnicos en procedimientos operativos estándar de equipos médicos complejos sin acceso constante al hardware real.',
       solution: 'Entorno de entrenamiento inmersivo en VR standalone con interacción háptica para simulación de procedimientos. Incluye exploración interna del tomógrafo mediante capas de visualización VR.',
@@ -76,10 +96,9 @@ export const Portfolio = () => {
       title: 'ChaskaSat', 
       category: 'Dashboard Satelital', 
       media: [
-        '/src/assets/cansat1.png',
-        '/src/assets/cansat2.png',
-        '/src/assets/cansat3.png',
-        // 👈 Agrega más URLs de imágenes o videos aquí
+        cansat1,
+        cansat2,
+        cansat3,
       ],
       challenge: 'Monitorear y diagnosticar el estado de nanosatélites en tiempo real con datos técnicos complejos de forma accesible.',
       solution: 'Aplicación móvil/web con panel de control y tarjetas informativas para sensores de presión, temperatura y posición. Incluye monitoreo de salud de sistemas críticos y centro de ayuda integrado para interpretación de datos técnicos.',
