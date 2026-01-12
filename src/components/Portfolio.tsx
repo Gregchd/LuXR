@@ -38,7 +38,8 @@ export const Portfolio = () => {
   const allCases = [
     { 
       title: 'VR Manager', 
-      category: 'Sistema de Control Centralizado', 
+      category: 'Sistema de Control Centralizado',
+      platform: 'Realidad Virtual',
       media: [
         yuyai1,
         yuyai2,
@@ -52,7 +53,8 @@ export const Portfolio = () => {
     },
     { 
       title: 'XR Museum', 
-      category: 'Preservación Cultural Inmersiva', 
+      category: 'Preservación Cultural Inmersiva',
+      platform: 'Realidad Extendida',
       media: [
         museum1,
         museum2,
@@ -65,7 +67,8 @@ export const Portfolio = () => {
     },
     { 
       title: 'OCT MR', 
-      category: 'Gemelo Digital Médico', 
+      category: 'Gemelo Digital Médico',
+      platform: 'Realidad Mixta',
       media: [
         oct1,
         oct2,
@@ -81,10 +84,11 @@ export const Portfolio = () => {
     },
     { 
       title: 'Horizon VR', 
-      category: 'Entrenamiento Inmersivo', 
+      category: 'Entrenamiento Inmersivo',
+      platform: 'Realidad Virtual',
       media: [
-        horizon1,
         horizon2,
+        horizon1,
         horizon3,
       ],
       challenge: 'Formar técnicos en procedimientos operativos estándar de equipos médicos complejos sin acceso constante al hardware real.',
@@ -94,7 +98,8 @@ export const Portfolio = () => {
     },
     { 
       title: 'ChaskaSat', 
-      category: 'Dashboard Satelital', 
+      category: 'Dashboard Satelital',
+      platform: 'Web & Mobile',
       media: [
         cansat1,
         cansat2,
@@ -166,7 +171,18 @@ export const Portfolio = () => {
                 onClick={() => handleProjectClick(c)}
                 className="group relative rounded-[3rem] overflow-hidden bg-white soft-shadow cursor-pointer border border-slate-100"
               >
-                <div className="aspect-[16/12] overflow-hidden">
+                <div className="aspect-[16/12] overflow-hidden relative">
+                  {/* Platform Badge */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className={`px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest backdrop-blur-md border ${
+                      c.platform === 'Realidad Virtual' ? 'bg-blue-500/90 text-white border-blue-400/50' :
+                      c.platform === 'Realidad Mixta' ? 'bg-purple-500/90 text-white border-purple-400/50' :
+                      c.platform === 'Realidad Extendida' ? 'bg-indigo-500/90 text-white border-indigo-400/50' :
+                      'bg-[#18d185]/90 text-white border-[#18d185]/50'
+                    }`}>
+                      {c.platform}
+                    </span>
+                  </div>
                   {isVideo(c.media[0]) ? (
                     <video src={c.media[0]} className="w-full h-full object-cover" muted loop playsInline />
                   ) : (
@@ -178,7 +194,7 @@ export const Portfolio = () => {
                     <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-2 block">{c.category}</span>
                     <h4 className="text-2xl font-black text-slate-900 tracking-tight">{c.title}</h4>
                   </div>
-                  <div className="w-14 h-14 bg-slate-50 rounded-full flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
+                  <div className="w-14 h-14 bg-slate-50 rounded-full flex items-center justify-center group-hover:bg-[#18d185] group-hover:text-white transition-all duration-300">
                     <ArrowRight size={24} />
                   </div>
                 </div>
@@ -286,9 +302,9 @@ export const Portfolio = () => {
                   </div>
                 </div>
                 <div className="mt-16">
-                  <button className="w-full py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black uppercase tracking-[0.2em] text-[10px] rounded-2xl hover:shadow-lg transition-all flex items-center justify-center gap-3">
+                  {/* <button className="w-full py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black uppercase tracking-[0.2em] text-[10px] rounded-2xl hover:shadow-lg transition-all flex items-center justify-center gap-3 hover:from-[#18d185] hover:to-blue-600">
                     Solicitar Demo de Proyecto <ExternalLink size={14} />
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </motion.div>

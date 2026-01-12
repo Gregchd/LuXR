@@ -9,25 +9,25 @@ export const Process = () => {
       id: '01', 
       title: 'Inmersión Inicial', 
       desc: 'Analizamos el ADN de su negocio para trazar una estrategia tecnológica a medida.',
-      icon: <Search className="text-indigo-600" size={24} />
+      icon: <Search className="text-indigo-600 group-hover:text-[#18d185] transition-colors" size={24} />
     },
     { 
       id: '02', 
       title: 'Blueprint Digital', 
       desc: 'Diseño de la experiencia y arquitectura técnica con enfoque en la exclusividad.',
-      icon: <Palette className="text-indigo-600" size={24} />
+      icon: <Palette className="text-indigo-600 group-hover:text-[#18d185] transition-colors" size={24} />
     },
     { 
       id: '03', 
       title: 'Ingeniería LuXR', 
       desc: 'Desarrollo ágil bajo los estándares más estrictos de calidad y seguridad mundial.',
-      icon: <Code2 className="text-indigo-600" size={24} />
+      icon: <Code2 className="text-indigo-600 group-hover:text-[#18d185] transition-colors" size={24} />
     },
     { 
       id: '04', 
       title: 'Evolución Continua', 
       desc: 'Lanzamiento controlado y acompañamiento estratégico para escalar su solución.',
-      icon: <Rocket className="text-indigo-600" size={24} />
+      icon: <Rocket className="text-indigo-600 group-hover:text-[#18d185] transition-colors" size={24} />
     }
   ];
 
@@ -60,14 +60,14 @@ export const Process = () => {
                 className="flex gap-8 group"
               >
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 bg-white border-2 border-slate-100 rounded-2xl flex items-center justify-center text-slate-300 font-black group-hover:border-indigo-600 group-hover:text-indigo-600 transition-all duration-500">
+                  <div className="w-14 h-14 bg-white border-2 border-slate-100 rounded-2xl flex items-center justify-center text-slate-300 font-black group-hover:border-[#18d185] group-hover:text-[#18d185] transition-all duration-500">
                     {step.id}
                   </div>
                   {i < steps.length - 1 && <div className="w-0.5 flex-grow bg-slate-100 my-4"></div>}
                 </div>
                 <div className="pb-8">
                   <div className="flex items-center gap-4 mb-3">
-                    <div className="p-2.5 bg-indigo-50 rounded-xl">{step.icon}</div>
+                    <div className="p-2.5 bg-indigo-50 rounded-xl group-hover:bg-[#18d185]/10 transition-colors">{step.icon}</div>
                     <h4 className="text-2xl font-black text-slate-900 tracking-tight">{step.title}</h4>
                   </div>
                   <p className="text-slate-500 font-medium leading-relaxed max-w-xl">{step.desc}</p>

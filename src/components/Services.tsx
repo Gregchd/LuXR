@@ -9,7 +9,7 @@ export const Services = () => {
       title: 'Inmersión (VR/AR)',
       description: 'Interfaces espaciales de próxima generación. Gemelos digitales y showrooms interactivos de lujo.',
       icon: <Box size={32} />,
-      tag: 'Ecosistemas VR'
+      tag: 'Realidad Virtual y Mixta'
     },
     {
       title: 'Desarrollo Web Premium',
@@ -40,8 +40,8 @@ export const Services = () => {
               whileHover={{ y: -10 }}
               className="p-10 bg-white rounded-[2.5rem] soft-shadow border border-slate-100 group transition-all duration-500 relative overflow-hidden"
             >
-              <div className="absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-full group-hover:from-blue-600/10 group-hover:to-indigo-600/10 transition-colors"></div>
-              <div className="mb-8 w-16 h-16 bg-gradient-to-br from-blue-50 to-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white transition-all duration-500">
+              <div className="absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-full group-hover:bg-[#18d185]/20 transition-all"></div>
+              <div className="mb-8 w-16 h-16 text-indigo-600 rounded-2xl flex items-center justify-center transition-all duration-500 bg-gradient-to-br from-blue-50 to-indigo-50 group-hover:bg-none group-hover:bg-[#18d185] group-hover:text-white">
                 {service.icon}
               </div>
               <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 block">{service.tag}</span>
