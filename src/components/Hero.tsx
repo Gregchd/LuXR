@@ -51,7 +51,7 @@ export const Hero = () => {
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen">
           {/* Main Content - Centered Vertically */}
           <div className="text-center">
@@ -124,7 +124,7 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="absolute inset-0 w-full h-full pointer-events-none"
+            className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
           >
             {/* Center - VR Headset (HERO ELEMENT) */}
             <motion.div

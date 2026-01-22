@@ -17,7 +17,7 @@ const CONTACT_CONFIG = {
 export const Contact = () => {
   return (
     <section id="contacto" className="py-20 bg-slate-950 relative">
-      <div className="mx-auto">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24">
         <div className="bg-slate-900 p-8 md:p-16 relative overflow-hidden text-white shadow-2xl flex flex-col items-center text-center">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-indigo-600/10 blur-[150px]"></div>
           <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-blue-600/5 blur-[120px]"></div>
