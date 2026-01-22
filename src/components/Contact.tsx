@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MessageCircle, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // 👇 CONFIGURA TUS LINKS AQUÍ
@@ -11,27 +11,7 @@ const CONTACT_CONFIG = {
     initials: 'MJ',
     title: 'Contacto Directo',
     description: 'Conversemos sobre tu proyecto'
-  },
-  socialMedia: [
-    {
-      icon: Linkedin,
-      name: 'LinkedIn',
-      label: 'LuXR Corporativo',
-      url: 'https://www.linkedin.com/company/luxrdotpe/posts/?feedView=all' // 👈 Pon tu URL de LinkedIn aquí
-    },
-    /* {
-      icon: Twitter,
-      name: 'X / Twitter',
-      label: 'Ecosistema LuXR',
-      url: '#' // 👈 Pon tu URL de Twitter/X aquí
-    }, */
-    {
-      icon: Instagram,
-      name: 'Instagram',
-      label: 'Showroom Digital',
-      url: 'https://www.instagram.com/luxr.pe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' // 👈 Pon tu URL de Instagram aquí
-    }
-  ]
+  }
 };
 
 export const Contact = () => {
@@ -84,25 +64,8 @@ export const Contact = () => {
                 </div>
               </motion.a>
 
-              <div className="md:col-span-2 flex flex-col sm:flex-row justify-center gap-4 mt-2">
-                {CONTACT_CONFIG.socialMedia.map((item, i) => (
-                  <motion.a 
-                    key={i} 
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ y: -8, backgroundColor: 'rgba(255, 255, 255, 0.05)', borderColor: '#4f46e5' }}
-                    className="flex items-center gap-4 bg-white/5 p-5 rounded-2xl border border-white/5 transition-all group w-full sm:w-auto sm:max-w-xs"
-                  >
-                    <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:to-indigo-600 transition-all">
-                      <item.icon size={24} className="text-slate-400 group-hover:text-white transition-colors" />
-                    </div>
-                    <div className="text-left">
-                      <h5 className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-0.5">{item.name}</h5>
-                      <p className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">{item.label}</p>
-                    </div>
-                  </motion.a>
-                ))}
+              <div className="md:col-span-2 flex justify-center mt-2">
+                {/* Social Media moved to Footer */}
               </div>
             </div>
             <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.5em] italic">Ingeniería Exclusiva para Visionarios Tecnológicos.</p>
