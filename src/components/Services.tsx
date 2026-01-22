@@ -26,8 +26,8 @@ export const Services = () => {
   ];
 
   return (
-    <section id="soluciones" className="py-32 bg-slate-50/50">
-      <div className="container mx-auto px-6">
+    <section id="soluciones" className="py-20 md:py-32 bg-slate-50/50">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-indigo-600 font-bold uppercase tracking-[0.4em] text-xs mb-6 italic">Soluciones Especializadas</h2>
           <h3 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Capacidades LuXR</h3>

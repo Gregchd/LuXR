@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MessageCircle, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // 👇 CONFIGURA TUS LINKS AQUÍ
@@ -11,34 +11,14 @@ const CONTACT_CONFIG = {
     initials: 'MJ',
     title: 'Contacto Directo',
     description: 'Conversemos sobre tu proyecto'
-  },
-  socialMedia: [
-    {
-      icon: Linkedin,
-      name: 'LinkedIn',
-      label: 'LuXR Corporativo',
-      url: 'https://www.linkedin.com/company/luxrdotpe/posts/?feedView=all' // 👈 Pon tu URL de LinkedIn aquí
-    },
-    /* {
-      icon: Twitter,
-      name: 'X / Twitter',
-      label: 'Ecosistema LuXR',
-      url: '#' // 👈 Pon tu URL de Twitter/X aquí
-    }, */
-    {
-      icon: Instagram,
-      name: 'Instagram',
-      label: 'Showroom Digital',
-      url: 'https://www.instagram.com/luxr.pe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' // 👈 Pon tu URL de Instagram aquí
-    }
-  ]
+  }
 };
 
 export const Contact = () => {
   return (
-    <section id="contacto" className="py-32 bg-white relative">
-      <div className=" mx-auto">
-        <div className="bg-slate-900 p-10 md:p-24 relative overflow-hidden text-white shadow-2xl flex flex-col items-center text-center">
+    <section id="contacto" className="py-20 bg-slate-950 relative">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24">
+        <div className="bg-slate-900 p-8 md:p-16 relative overflow-hidden text-white shadow-2xl flex flex-col items-center text-center">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-indigo-600/10 blur-[150px]"></div>
           <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-blue-600/5 blur-[120px]"></div>
           
@@ -46,18 +26,18 @@ export const Contact = () => {
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="inline-block px-4 py-2 rounded-full bg-indigo-600/20 text-indigo-400 text-[10px] font-black tracking-widest uppercase mb-10 italic border border-indigo-500/30"
+              className="inline-block px-4 py-1.5 rounded-full bg-indigo-600/20 text-indigo-400 text-[10px] font-black tracking-widest uppercase mb-6 italic border border-indigo-500/30"
             >
               Consultoría Estratégica
             </motion.div>
             
-            <h3 className="text-5xl md:text-8xl font-black tracking-tighter mb-16 leading-[0.9]">
+            <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-10 leading-[0.9]">
               Potencie su <br /> 
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 italic pl-3 pr-3">Visión</span>{' '}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 italic pr-3">Tecnológica.</span>
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
               <motion.a 
                 href={CONTACT_CONFIG.whatsapp.url}
                 target="_blank" 
@@ -65,44 +45,27 @@ export const Contact = () => {
                 whileHover={{ scale: 1.02 }}
                 className="relative group block md:col-span-2 mx-auto w-full max-w-2xl"
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2.5rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
-                <div className="relative flex flex-col sm:flex-row items-center gap-8 bg-slate-800/80 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-white/10 text-left">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
+                <div className="relative flex flex-col sm:flex-row items-center gap-6 bg-slate-800/80 backdrop-blur-xl p-6 md:p-8 rounded-2xl border border-white/10 text-left">
                 <div className="relative shrink-0">
-                    <div className="w-24 h-24 bg-blue-600 rounded-3xl flex items-center justify-center text-4xl font-black shadow-lg">{CONTACT_CONFIG.whatsapp.initials}</div>
-                    <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-green-500 border-4 border-slate-800 rounded-full animate-pulse shadow-md"></div>
+                    <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-2xl font-black shadow-lg">{CONTACT_CONFIG.whatsapp.initials}</div>
+                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-4 border-slate-800 rounded-full animate-pulse shadow-md"></div>
                   </div>
                   <div className="flex-grow">
-                    <h4 className="text-xs font-black text-slate-500 uppercase tracking-[0.15em] mb-2">{CONTACT_CONFIG.whatsapp.name}</h4>
-                    <p className="text-2xl md:text-3xl font-black text-white tracking-wide mb-3">{CONTACT_CONFIG.whatsapp.title}</p>
+                    <h4 className="text-xs font-black text-slate-500 uppercase tracking-[0.15em] mb-1">{CONTACT_CONFIG.whatsapp.name}</h4>
+                    <p className="text-xl md:text-2xl font-black text-white tracking-wide mb-2">{CONTACT_CONFIG.whatsapp.title}</p>
                     <div className="flex items-center gap-2 text-slate-400">
                       <span className="text-xs font-medium">{CONTACT_CONFIG.whatsapp.description}</span>
                     </div>
                   </div>
-                  <div className="shrink-0 w-16 h-16 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-[#18d185] transition-all">
-                    <MessageCircle size={32} className="text-indigo-400 group-hover:text-white" />
+                  <div className="shrink-0 w-12 h-12 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-[#18d185] transition-all">
+                    <MessageCircle size={24} className="text-indigo-400 group-hover:text-white" />
                   </div>
                 </div>
               </motion.a>
 
-              <div className="md:col-span-2 flex flex-col sm:flex-row justify-center gap-6 mt-4">
-                {CONTACT_CONFIG.socialMedia.map((item, i) => (
-                  <motion.a 
-                    key={i} 
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ y: -8, backgroundColor: 'rgba(255, 255, 255, 0.05)', borderColor: '#4f46e5' }}
-                    className="flex items-center gap-6 bg-white/5 p-8 rounded-[2.5rem] border border-white/5 transition-all group w-full sm:w-auto sm:max-w-xs"
-                  >
-                    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:to-indigo-600 transition-all">
-                      <item.icon size={28} className="text-slate-400 group-hover:text-white transition-colors" />
-                    </div>
-                    <div className="text-left">
-                      <h5 className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-0.5">{item.name}</h5>
-                      <p className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors">{item.label}</p>
-                    </div>
-                  </motion.a>
-                ))}
+              <div className="md:col-span-2 flex justify-center mt-2">
+                {/* Social Media moved to Footer */}
               </div>
             </div>
             <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.5em] italic">Ingeniería Exclusiva para Visionarios Tecnológicos.</p>

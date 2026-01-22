@@ -32,8 +32,8 @@ export const Process = () => {
   ];
 
   return (
-    <section id="proceso" className="py-32 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="proceso" className="py-20 md:py-32 bg-white">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24">
         <div className="flex flex-col lg:flex-row gap-20">
           <div className="lg:w-1/3">
             <h2 className="text-indigo-600 font-bold uppercase tracking-[0.4em] text-xs mb-6 italic">Nuestra Ruta</h2>

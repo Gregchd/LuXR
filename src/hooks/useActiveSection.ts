@@ -17,7 +17,7 @@ export const useActiveSection = (sectionIds: string[]) => {
             }
           });
         },
-        { threshold: 0.5 }
+        { rootMargin: '-45% 0px -45% 0px' }
       );
 
       observer.observe(element);
