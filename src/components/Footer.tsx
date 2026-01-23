@@ -1,160 +1,185 @@
 import React from 'react';
-import { Linkedin, Instagram, ArrowRight, Sparkles } from 'lucide-react';
+import { Linkedin, Instagram, ArrowRight, Sparkles, Zap, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
 import logoSvg from '../assets/logo.svg';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
-  const linkVariants = {
-    initial: { x: 0, color: '#94a3b8' }, // slate-400
-    hover: { x: 5, color: '#818cf8' }    // indigo-400
-  };
-
   return (
-    <footer className="bg-slate-950 border-t border-slate-900 pt-24 pb-12 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+    <footer className="bg-slate-950 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px]"
+          animate={{ scale: [1, 1.2, 1], x: [0, 50, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[140px]"
+          animate={{ scale: [1, 1.3, 1], x: [0, -50, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      </div>
 
-      <div className="container mx-auto px-8 md:px-16 lg:px-24 relative z-10">
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20"
-        >
-          {/* Brand Column */}
-          <motion.div variants={itemVariants} className="col-span-1 md:col-span-2 space-y-8">
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className="inline-block"
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Main Footer Content */}
+        <div className="border-t border-white/5 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+            {/* Brand Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="md:col-span-5 space-y-6"
             >
-              <img src={logoSvg} alt="LuXR Logo" className="h-10 w-auto" />
+              <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                <img src={logoSvg} alt="LuXR Logo" className="h-10 w-auto" />
+              </motion.div>
+
+              <p className="text-slate-400 text-sm leading-relaxed max-w-md">
+                Construimos sistemas digitales de alto impacto que impulsan el crecimiento empresarial. 
+                Web, Mobile y XR integrados en soluciones que generan resultados reales.
+              </p>
+
+              {/* Tech Badges */}
+              <div className="flex flex-wrap gap-2">
+                <div className="px-3 py-1.5 bg-white/5 backdrop-blur-xl rounded-lg border border-white/10 flex items-center gap-2">
+                  <Zap className="text-blue-400" size={14} fill="currentColor" />
+                  <span className="text-xs font-bold text-slate-300">Web Apps</span>
+                </div>
+                <div className="px-3 py-1.5 bg-white/5 backdrop-blur-xl rounded-lg border border-white/10 flex items-center gap-2">
+                  <Rocket className="text-indigo-400" size={14} />
+                  <span className="text-xs font-bold text-slate-300">Mobile</span>
+                </div>
+                <div className="px-3 py-1.5 bg-white/5 backdrop-blur-xl rounded-lg border border-white/10 flex items-center gap-2">
+                  <span className="text-xs">🥽</span>
+                  <span className="text-xs font-bold text-slate-300">XR/VR</span>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex gap-3">
+                <motion.a
+                  href="https://www.linkedin.com/company/luxrdotpe/posts/?feedView=all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  className="w-11 h-11 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-all"
+                >
+                  <Linkedin size={18} />
+                </motion.a>
+                <motion.a
+                  href="https://www.instagram.com/luxr.pe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  className="w-11 h-11 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-600 hover:border-pink-600 transition-all"
+                >
+                  <Instagram size={18} />
+                </motion.a>
+              </div>
             </motion.div>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              Ingeniería de software de élite para empresas visionarias. 
-              Transformamos complejidad técnica en ventaja competitiva absoluta.
-            </p>
-            
-            <div className="flex gap-4">
-              <motion.a 
-                href="https://www.linkedin.com/company/luxrdotpe/posts/?feedView=all" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, backgroundColor: '#4f46e5', color: '#fff' }}
-                whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 transition-colors"
-              >
-                <Linkedin size={20} />
-              </motion.a>
-              <motion.a 
-                href="https://www.instagram.com/luxr.pe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                whileHover={{ y: -5, backgroundColor: '#db2777', color: '#fff' }}
-                whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 transition-colors"
-              >
-                <Instagram size={20} />
-              </motion.a>
-            </div>
-          </motion.div>
 
-          {/* Links Column 1 */}
-          <motion.div variants={itemVariants}>
-            <h4 className="text-white font-bold mb-8 flex items-center gap-2">
-              <span className="w-8 h-[2px] bg-indigo-600 inline-block"></span>
-              Empresa
-            </h4>
-            <ul className="space-y-4">
-              {['Sobre Nosotros', 'Servicios', 'Portafolio', 'Carreras'].map((item) => (
-                <li key={item}>
-                  <motion.a 
-                    href="#" 
-                    variants={linkVariants}
-                    initial="initial"
-                    whileHover="hover"
-                    className="text-sm font-medium flex items-center gap-2"
-                  >
-                    <span>{item}</span>
-                    <motion.span 
-                      variants={{ initial: { opacity: 0, x: -5 }, hover: { opacity: 1, x: 0 } }}
+            {/* Quick Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="md:col-span-3"
+            >
+              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">Navegación</h4>
+              <ul className="space-y-3">
+                {[
+                  { name: 'Inicio', id: 'inicio' },
+                  { name: 'Soluciones', id: 'soluciones' },
+                  { name: 'Proceso', id: 'proceso' },
+                  { name: 'Portafolio', id: 'casos' }
+                ].map((item) => (
+                  <li key={item.id}>
+                    <motion.button
+                      onClick={() => scrollToSection(item.id)}
+                      whileHover={{ x: 5 }}
+                      className="text-slate-400 hover:text-white text-sm font-medium transition-colors flex items-center gap-2 group"
                     >
-                      <ArrowRight size={14} />
-                    </motion.span>
-                  </motion.a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+                      <span className="w-0 h-[2px] bg-blue-500 group-hover:w-4 transition-all duration-300"></span>
+                      {item.name}
+                    </motion.button>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
 
-          {/* Links Column 2 */}
-          <motion.div variants={itemVariants}>
-            <h4 className="text-white font-bold mb-8 flex items-center gap-2">
-              <span className="w-8 h-[2px] bg-indigo-600 inline-block"></span>
-              Legal
-            </h4>
-            <ul className="space-y-4">
-              {['Privacidad', 'Términos', 'Cookies'].map((item) => (
-                <li key={item}>
-                  <motion.a 
-                    href="#" 
-                    variants={linkVariants}
-                    initial="initial"
-                    whileHover="hover"
-                    className="text-sm font-medium flex items-center gap-2"
-                  >
-                    <span>{item}</span>
-                    <motion.span 
-                      variants={{ initial: { opacity: 0, x: -5 }, hover: { opacity: 1, x: 0 } }}
+            {/* Resources */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="md:col-span-4"
+            >
+              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">Recursos</h4>
+              <ul className="space-y-3">
+                {[
+                  { name: 'Blog', href: '#' },
+                  { name: 'Documentación', href: '#' },
+                  { name: 'Casos de Estudio', href: '#' },
+                  { name: 'FAQ', href: '#' }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <motion.a
+                      href={item.href}
+                      whileHover={{ x: 5 }}
+                      className="text-slate-400 hover:text-white text-sm font-medium transition-colors flex items-center gap-2 group"
                     >
-                      <ArrowRight size={14} />
-                    </motion.span>
-                  </motion.a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </motion.div>
+                      <span className="w-0 h-[2px] bg-indigo-500 group-hover:w-4 transition-all duration-300"></span>
+                      {item.name}
+                    </motion.a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
 
         {/* Bottom Bar */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="border-t border-slate-900/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-6"
+          viewport={{ once: true }}
+          className="border-t border-white/5 py-8"
         >
-          <p className="text-slate-500 text-xs font-medium text-center md:text-left tracking-wide">
-            © {currentYear} LUXR TECHNOLOGIES SAC.
-          </p>
-          
-          <div className="flex items-center gap-3 bg-slate-900/50 px-4 py-2 rounded-full border border-slate-800/50 backdrop-blur-sm">
-            <div className="relative">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full z-10 relative"></div>
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-ping absolute inset-0"></div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-4 text-xs text-slate-500">
+              <p>© {currentYear} LUXR TECHNOLOGIES SAC. Todos los derechos reservados.</p>
+              <div className="flex gap-4">
+                <a href="#" className="hover:text-white transition-colors">Privacidad</a>
+                <span>·</span>
+                <a href="#" className="hover:text-white transition-colors">Términos</a>
+              </div>
             </div>
-            <span className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">
-              All Systems Operational
-            </span>
+
+            <div className="flex items-center gap-3 px-4 py-2 bg-white/5 backdrop-blur-xl rounded-full border border-white/10">
+              <div className="relative">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-ping absolute inset-0"></div>
+              </div>
+              <span className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">
+                Sistemas Operativos
+              </span>
+            </div>
           </div>
         </motion.div>
       </div>

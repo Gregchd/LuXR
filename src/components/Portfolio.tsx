@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight, X, Search, Layers, BarChart3, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -91,6 +91,27 @@ export const Portfolio = () => {
     }
   ];
 
+  // Auto-scroll carousel every 5 seconds
+  useEffect(() => {
+    const autoScroll = setInterval(() => {
+      if (carouselRef.current) {
+        const scrollWidth = carouselRef.current.scrollWidth;
+        const clientWidth = carouselRef.current.clientWidth;
+        const currentScroll = carouselRef.current.scrollLeft;
+        
+        // If at the end, scroll back to start
+        if (currentScroll + clientWidth >= scrollWidth - 10) {
+          carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Scroll to next item (approximately 550px per card + gap)
+          carouselRef.current.scrollBy({ left: 570, behavior: 'smooth' });
+        }
+      }
+    }, 5000); // 5 seconds
+
+    return () => clearInterval(autoScroll);
+  }, []);
+
   const isVideo = (url: string) => {
     const videoExtensions = ['.mp4', '.webm', '.mov', '.avi', '.mkv'];
     return videoExtensions.some(ext => url.toLowerCase().endsWith(ext));
@@ -121,7 +142,7 @@ export const Portfolio = () => {
   };
 
   return (
-    <section id="casos" className="py-20 md:py-32 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 overflow-hidden relative">
+    <section id="casos" className="min-h-screen flex flex-col justify-center py-20 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 overflow-hidden relative">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600/10 rounded-full blur-[150px] pointer-events-none"></div>
 

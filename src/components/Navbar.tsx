@@ -29,14 +29,10 @@ export const Navbar = () => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+      const elementPosition = element.offsetTop;
 
       window.scrollTo({
-        top: offsetPosition,
+        top: elementPosition,
         behavior: 'smooth'
       });
     }

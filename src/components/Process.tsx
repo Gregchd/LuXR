@@ -32,7 +32,7 @@ export const Process = () => {
   ];
 
   return (
-    <section id="proceso" className="py-20 md:py-32 bg-white">
+    <section id="proceso" className="min-h-screen flex items-center py-20 bg-white">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         <div className="flex flex-col lg:flex-row gap-20">
           <div className="lg:w-1/3">

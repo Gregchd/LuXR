@@ -1,54 +1,131 @@
 
 import React from 'react';
-import { Box, Globe, Smartphone } from 'lucide-react';
+import { Rocket, Building2, Lightbulb, TrendingUp, Users, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const Services = () => {
-  const services = [
+  const clientTypes = [
     {
-      title: 'Inmersión (VR/AR)',
-      description: 'Interfaces espaciales de próxima generación. Gemelos digitales y showrooms interactivos de lujo.',
-      icon: <Box size={32} />,
-      tag: 'Realidad Virtual y Mixta'
+      title: 'Startups Escalando',
+      subtitle: 'De MVP a Producto Completo',
+      description: 'Necesitas validar rápido, iterar constantemente y escalar sin límites. Te ayudamos a construir la base tecnológica que soportará tu crecimiento exponencial.',
+      icon: <Rocket size={28} />,
+      features: ['Desarrollo ágil', 'Arquitectura escalable', 'Time-to-market rápido'],
+      gradient: 'from-blue-500 to-indigo-600',
+      accentColor: 'blue'
     },
     {
-      title: 'Desarrollo Web Premium',
-      description: 'Estructuras escalables con diseño cinematográfico. Rendimiento extremo y seguridad empresarial.',
-      icon: <Globe size={32} />,
-      tag: 'Ingeniería Web'
+      title: 'Empresas Transformándose',
+      subtitle: 'Modernización Digital',
+      description: 'Tu negocio necesita evolucionar digitalmente para mantenerse competitivo. Implementamos soluciones que optimizan operaciones y mejoran la experiencia del cliente.',
+      icon: <Building2 size={28} />,
+      features: ['Integración de sistemas', 'Automatización', 'Optimización de procesos'],
+      gradient: 'from-indigo-500 to-purple-600',
+      accentColor: 'indigo'
     },
     {
-      title: 'Apps Móviles Nativa',
-      description: 'Experiencias de usuario sin fricciones. Desarrollamos el core de su presencia móvil.',
-      icon: <Smartphone size={32} />,
-      tag: 'Arquitectura Mobile'
+      title: 'Innovadores Liderando',
+      subtitle: 'Tecnología de Vanguardia',
+      description: 'Quieres estar a la vanguardia con XR, IA y tecnologías emergentes. Creamos experiencias que diferencian tu marca y generan impacto real.',
+      icon: <Lightbulb size={28} />,
+      features: ['XR/VR/AR', 'Experiencias inmersivas', 'Diferenciación de marca'],
+      gradient: 'from-[#18d185] to-emerald-600',
+      accentColor: 'green'
     }
   ];
 
   return (
-    <section id="soluciones" className="py-20 md:py-32 bg-slate-50/50">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-indigo-600 font-bold uppercase tracking-[0.4em] text-xs mb-6 italic">Soluciones Especializadas</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Capacidades LuXR</h3>
+    <section id="soluciones" className="min-h-screen flex items-center py-24 bg-slate-950 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"
+          animate={{ scale: [1, 1.2, 1], x: [0, 30, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px]"
+          animate={{ scale: [1, 1.3, 1], x: [0, -30, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10 w-full">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight"
+          >
+            Construimos para empresas que{' '}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-[#18d185]">
+              no se conforman
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-slate-400 text-lg"
+          >
+            Desde startups disruptivas hasta corporaciones en transformación
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {services.map((service, i) => (
+        {/* Client Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {clientTypes.map((client, i) => (
             <motion.div
               key={i}
-              whileHover={{ y: -10 }}
-              className="p-10 bg-white rounded-[2.5rem] soft-shadow border border-slate-100 group transition-all duration-500 relative overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="group relative"
             >
-              <div className="absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-full group-hover:bg-[#18d185]/20 transition-all"></div>
-              <div className="mb-8 w-16 h-16 text-indigo-600 rounded-2xl flex items-center justify-center transition-all duration-500 bg-gradient-to-br from-blue-50 to-indigo-50 group-hover:bg-none group-hover:bg-[#18d185] group-hover:text-white">
-                {service.icon}
+              {/* Card */}
+              <div className="relative p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col">
+                {/* Gradient Glow */}
+                <div className={`absolute -inset-0.5 bg-gradient-to-r ${client.gradient} rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`}></div>
+
+                {/* Icon */}
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${client.gradient} flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  {client.icon}
+                </div>
+
+                {/* Content */}
+                <div className="flex-grow">
+                  <h3 className="text-2xl font-black text-white mb-2">{client.title}</h3>
+                  <p className="text-sm font-semibold text-slate-400 mb-4">{client.subtitle}</p>
+                  <p className="text-slate-300 leading-relaxed mb-6 text-sm">
+                    {client.description}
+                  </p>
+
+                  {/* Features */}
+                  <div className="space-y-2">
+                    {client.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <Zap className={`text-${client.accentColor}-400`} size={14} fill="currentColor" />
+                        <span className="text-xs text-slate-400 font-medium">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Indicator */}
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <div className="flex items-center gap-2 text-slate-400 group-hover:text-white transition-colors">
+                    <TrendingUp size={16} />
+                    <span className="text-xs font-bold uppercase tracking-wider">Resultados Comprobados</span>
+                  </div>
+                </div>
               </div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 block">{service.tag}</span>
-              <h4 className="text-2xl font-black mb-5 text-slate-900">{service.title}</h4>
-              <p className="text-slate-500 mb-8 leading-relaxed font-medium">
-                {service.description}
-              </p>
             </motion.div>
           ))}
         </div>
