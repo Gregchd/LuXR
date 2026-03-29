@@ -2,28 +2,55 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// ─── Para reemplazar un logo: añade la ruta en el campo `logo` ───────────────
+// Ejemplo: { name: 'Mi Empresa', logo: '/logos/miempresa.png', ... }
+// Si `logo` está vacío se muestra el placeholder de color.
+// ─────────────────────────────────────────────────────────────────────────────
 const brands = [
-  { name: 'TechCorp',   initials: 'TC', color: 'from-blue-500 to-blue-700' },
-  { name: 'Innovatek',  initials: 'IN', color: 'from-indigo-500 to-indigo-700' },
-  { name: 'NexusLab',   initials: 'NL', color: 'from-violet-500 to-violet-700' },
-  { name: 'Axiom',      initials: 'AX', color: 'from-sky-500 to-sky-700' },
-  { name: 'Vertex',     initials: 'VX', color: 'from-cyan-500 to-cyan-700' },
-  { name: 'PrimeAI',    initials: 'PA', color: 'from-teal-500 to-teal-700' },
-  { name: 'CoreSys',    initials: 'CS', color: 'from-emerald-500 to-emerald-700' },
-  { name: 'Orbitec',    initials: 'OR', color: 'from-blue-400 to-indigo-600' },
+  { name: 'TechCorp',   logo: '', initials: 'TC', color: 'from-blue-500 to-blue-700' },
+  { name: 'Innovatek',  logo: '', initials: 'IN', color: 'from-indigo-500 to-indigo-700' },
+  { name: 'NexusLab',   logo: '', initials: 'NL', color: 'from-violet-500 to-violet-700' },
+  { name: 'Axiom',      logo: '', initials: 'AX', color: 'from-sky-500 to-sky-700' },
+  { name: 'Vertex',     logo: '', initials: 'VX', color: 'from-cyan-500 to-cyan-700' },
+  { name: 'PrimeAI',    logo: '', initials: 'PA', color: 'from-teal-500 to-teal-700' },
+  { name: 'CoreSys',    logo: '', initials: 'CS', color: 'from-emerald-500 to-emerald-700' },
+  { name: 'Orbitec',    logo: '', initials: 'OR', color: 'from-blue-400 to-indigo-600' },
 ];
 
 const doubled = [...brands, ...brands];
 
-
 const edgeMask = {
-  maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+  maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
 };
+
+interface Brand { name: string; logo: string; initials: string; color: string; }
+
+const BrandCard = ({ brand }: { brand: Brand }) => (
+  <div className="flex flex-col items-center gap-4 px-8 py-7 rounded-3xl bg-white/5 border border-white/10 shrink-0 group hover:bg-white/10 hover:border-[#18d185]/40 transition-all duration-300 cursor-default w-64">
+    {/* Logo area — relación 3:1 aprox., ideal para logos horizontales */}
+    <div className="w-full h-20 flex items-center justify-center rounded-2xl overflow-hidden bg-white/5">
+      {brand.logo ? (
+        <img
+          src={brand.logo}
+          alt={brand.name}
+          className="w-full h-full object-contain p-3 filter brightness-75 group-hover:brightness-100 transition-all duration-300"
+        />
+      ) : (
+        <div className={`w-full h-full bg-gradient-to-br ${brand.color} flex items-center justify-center`}>
+          <span className="text-white font-black text-3xl">{brand.initials}</span>
+        </div>
+      )}
+    </div>
+    <span className="text-white/50 font-bold text-sm group-hover:text-white/90 transition-colors duration-300 whitespace-nowrap tracking-wide">
+      {brand.name}
+    </span>
+  </div>
+);
 
 export const Brands = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-slate-950 overflow-hidden py-24">
+    <section id="clientes" className="relative min-h-screen flex flex-col items-center justify-center bg-slate-950 overflow-hidden py-24">
 
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -65,7 +92,7 @@ export const Brands = () => {
           </p>
         </motion.div>
 
-        {/* Carrusel — fila única, tarjetas grandes */}
+        {/* Carrusel */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -77,25 +104,13 @@ export const Brands = () => {
           <motion.div
             className="flex gap-6 w-max"
             animate={{ x: ['0%', '-50%'] }}
-            transition={{ duration: 36, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
           >
             {doubled.map((brand, i) => (
-              <div
-                key={i}
-                className="flex flex-col items-center gap-5 px-10 py-8 w-52 rounded-3xl bg-white/5 border border-white/10 shrink-0 group hover:bg-white/10 hover:border-[#18d185]/40 transition-all duration-300 cursor-default"
-              >
-                {/* Logo placeholder grande */}
-                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${brand.color} flex items-center justify-center shadow-xl`}>
-                  <span className="text-white font-black text-2xl">{brand.initials}</span>
-                </div>
-                <span className="text-white/60 font-bold text-base group-hover:text-white transition-colors duration-300 whitespace-nowrap">
-                  {brand.name}
-                </span>
-              </div>
+              <BrandCard key={i} brand={brand} />
             ))}
           </motion.div>
         </motion.div>
-
 
       </div>
     </section>

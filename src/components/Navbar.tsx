@@ -11,6 +11,7 @@ export const Navbar = () => {
   
   const navLinks = [
     { name: 'Inicio', id: 'inicio' },
+    { name: 'Clientes', id: 'clientes' },
     { name: 'Soluciones', id: 'soluciones' },
     { name: 'Proceso', id: 'proceso' },
     { name: 'Portafolio', id: 'casos' },
