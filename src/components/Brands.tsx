@@ -15,11 +15,6 @@ const brands = [
 
 const doubled = [...brands, ...brands];
 
-const stats = [
-  { value: '12+', label: 'Clientes activos' },
-  { value: '98%', label: 'Retención' },
-  { value: '5',   label: 'Países' },
-];
 
 const edgeMask = {
   maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
@@ -59,14 +54,14 @@ export const Brands = () => {
             Clientes
           </span>
           <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6">
-            Construido para
+            Ya trabajan
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-[#18d185]">
-              quienes mueven el mercado
+              con nosotros
             </span>
           </h3>
           <p className="text-slate-400 font-medium text-lg max-w-xl mx-auto">
-            Empresas que ya operan con tecnología LuXR y no vuelven atrás.
+            Un grupo selecto de empresas que apuestan por tecnología bien hecha.
           </p>
         </motion.div>
 
@@ -101,25 +96,6 @@ export const Brands = () => {
           </motion.div>
         </motion.div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-20 px-6"
-        >
-          {stats.map((stat, i) => (
-            <div key={i} className="text-center group">
-              <div className="text-5xl md:text-6xl font-black text-white mb-2 group-hover:text-[#18d185] transition-colors duration-300">
-                {stat.value}
-              </div>
-              <div className="text-slate-500 font-semibold text-sm uppercase tracking-widest">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
 
       </div>
     </section>
