@@ -9,16 +9,16 @@ const CONTACT_CONFIG = {
     url: 'https://wa.me/51946411109', // Cambia este número de WhatsApp
     name: 'Marcelo Jara',
     initials: 'MJ',
-    title: 'Contacto Directo',
-    description: 'Conversemos sobre tu proyecto'
+    title: 'Direct Contact',
+    description: "Let's talk about your project"
   }
 };
 
 export const Contact = () => {
   return (
-    <section id="contacto" className="py-20 bg-slate-950 relative">
+    <section id="contacto" className="min-h-screen flex items-center bg-slate-950 relative py-16">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        <div className="bg-slate-900 p-8 md:p-16 relative overflow-hidden text-white shadow-2xl flex flex-col items-center text-center">
+        <div className="bg-slate-900 p-5 md:p-16 relative overflow-hidden text-white shadow-2xl flex flex-col items-center text-center">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-indigo-600/10 blur-[150px]"></div>
           <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-blue-600/5 blur-[120px]"></div>
           
@@ -28,13 +28,13 @@ export const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               className="inline-block px-4 py-1.5 rounded-full bg-indigo-600/20 text-indigo-400 text-[10px] font-black tracking-widest uppercase mb-6 italic border border-indigo-500/30"
             >
-              Consultoría Estratégica
+              Let's Build Together
             </motion.div>
-            
-            <h3 className="text-4xl md:text-6xl font-black tracking-tighter mb-10 leading-[0.9]">
-              Potencie su <br /> 
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 italic pl-3 pr-3">Visión</span>{' '}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 italic pr-3">Tecnológica.</span>
+
+            <h3 className="text-3xl md:text-6xl font-black tracking-tighter mb-8 leading-[0.95]">
+              Start your <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 italic pl-3 pr-3">XR</span>{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 italic pr-3">Project.</span>
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
@@ -68,7 +68,7 @@ export const Contact = () => {
                 {/* Social Media moved to Footer */}
               </div>
             </div>
-            <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.5em] italic">Ingeniería Exclusiva para Visionarios Tecnológicos.</p>
+            <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.5em] italic">Exclusive XR engineering for technology visionaries.</p>
           </div>
         </div>
       </div>

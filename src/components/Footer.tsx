@@ -51,8 +51,10 @@ export const Footer = () => {
               <img src={logoSvg} alt="LuXR Logo" className="h-10 w-auto" />
             </motion.div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              Ingeniería de software de élite para empresas visionarias. 
-              Transformamos complejidad técnica en ventaja competitiva absoluta.
+              XR & VR studio building the next generation of immersive experiences.
+            </p>
+            <p className="text-slate-600 text-xs font-medium tracking-wide">
+              Unreal Engine 5 · OpenXR · Android XR · Lima, Peru
             </p>
             
             <div className="flex gap-4">
@@ -83,10 +85,10 @@ export const Footer = () => {
           <motion.div variants={itemVariants}>
             <h4 className="text-white font-bold mb-8 flex items-center gap-2">
               <span className="w-8 h-[2px] bg-indigo-600 inline-block"></span>
-              Empresa
+              Company
             </h4>
             <ul className="space-y-4">
-              {['Sobre Nosotros', 'Servicios', 'Portafolio', 'Carreras'].map((item) => (
+              {['About', 'Portfolio', 'Contact'].map((item) => (
                 <li key={item}>
                   <motion.a 
                     href="#" 
@@ -114,7 +116,7 @@ export const Footer = () => {
               Legal
             </h4>
             <ul className="space-y-4">
-              {['Privacidad', 'Términos', 'Cookies'].map((item) => (
+              {['Privacy', 'Terms', 'Cookies'].map((item) => (
                 <li key={item}>
                   <motion.a 
                     href="#" 

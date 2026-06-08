@@ -1,56 +1,84 @@
 
 import React from 'react';
-import { Box, Globe, Smartphone } from 'lucide-react';
+import { Glasses, ScanLine, Smartphone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const Services = () => {
-  const services = [
-    {
-      title: 'Inmersión (VR/AR)',
-      description: 'Interfaces espaciales de próxima generación. Gemelos digitales y showrooms interactivos de lujo.',
-      icon: <Box size={32} />,
-      tag: 'Realidad Virtual y Mixta'
-    },
-    {
-      title: 'Desarrollo Web Premium',
-      description: 'Estructuras escalables con diseño cinematográfico. Rendimiento extremo y seguridad empresarial.',
-      icon: <Globe size={32} />,
-      tag: 'Ingeniería Web'
-    },
-    {
-      title: 'Apps Móviles Nativa',
-      description: 'Experiencias de usuario sin fricciones. Desarrollamos el core de su presencia móvil.',
-      icon: <Smartphone size={32} />,
-      tag: 'Arquitectura Mobile'
-    }
-  ];
-
   return (
-    <section id="soluciones" className="py-20 md:py-32 bg-slate-50/50">
-      <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-indigo-600 font-bold uppercase tracking-[0.4em] text-xs mb-6 italic">Soluciones Especializadas</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Capacidades LuXR</h3>
+    <section id="soluciones" className="min-h-screen flex items-center bg-slate-50/50 py-16">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 w-full">
+
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <h2 className="text-indigo-600 font-bold uppercase tracking-[0.4em] text-xs mb-3 italic">Capabilities &amp; Tech Stack</h2>
+          <h3 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">What We Build</h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {services.map((service, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -10 }}
-              className="p-10 bg-white rounded-[2.5rem] soft-shadow border border-slate-100 group transition-all duration-500 relative overflow-hidden"
-            >
-              <div className="absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-full group-hover:bg-[#18d185]/20 transition-all"></div>
-              <div className="mb-8 w-16 h-16 text-indigo-600 rounded-2xl flex items-center justify-center transition-all duration-500 bg-gradient-to-br from-blue-50 to-indigo-50 group-hover:bg-none group-hover:bg-[#18d185] group-hover:text-white">
-                {service.icon}
+        {/* Grid: lead card on top, two smaller below */}
+        <div className="flex flex-col gap-4">
+
+          {/* CARD 1 — Lead (bigger) */}
+          <motion.div
+            whileHover={{ y: -4 }}
+            className="relative overflow-hidden p-7 md:p-8 bg-white rounded-3xl soft-shadow border border-slate-100 group transition-all duration-500"
+          >
+            <div className="absolute -right-6 -top-6 w-40 h-40 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-full group-hover:opacity-60 transition-all" />
+            <div className="relative flex flex-col md:flex-row md:items-center gap-6">
+              <div className="shrink-0 w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500">
+                <Glasses size={32} />
               </div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 block">{service.tag}</span>
-              <h4 className="text-2xl font-black mb-5 text-slate-900">{service.title}</h4>
-              <p className="text-slate-500 mb-8 leading-relaxed font-medium">
-                {service.description}
+              <div className="flex-1">
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 block">
+                  Unreal Engine 5 · OpenXR · Android XR · Meta Quest
+                </span>
+                <h4 className="text-2xl md:text-3xl font-black mb-2 text-slate-900">XR &amp; VR Experiences</h4>
+                <p className="text-slate-500 leading-relaxed font-medium max-w-3xl">
+                  Immersive spatial experiences built in Unreal Engine 5 with OpenXR. From cultural heritage platforms to enterprise training simulations — deployed on Meta Quest, Android XR, and wired XR glasses.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* CARDS 2 & 3 — Secondary (side by side) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            {/* CARD 2 */}
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="relative overflow-hidden p-7 bg-white rounded-3xl soft-shadow border border-slate-100 group transition-all duration-500"
+            >
+              <div className="absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-full group-hover:opacity-60 transition-all" />
+              <div className="mb-4 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-indigo-100 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500">
+                <ScanLine size={24} />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">
+                Photogrammetry · 3D Scanning · UE5 Pipeline
+              </span>
+              <h4 className="text-xl font-black mb-2 text-slate-900">3D Digitization &amp; Spatial Content</h4>
+              <p className="text-slate-500 leading-relaxed font-medium text-sm">
+                End-to-end photogrammetry pipelines for cultural artifacts, architecture, and physical objects. We digitize, reconstruct, and deploy into interactive XR environments.
               </p>
             </motion.div>
-          ))}
+
+            {/* CARD 3 */}
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="relative overflow-hidden p-7 bg-white rounded-3xl soft-shadow border border-slate-100 group transition-all duration-500"
+            >
+              <div className="absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-full group-hover:opacity-60 transition-all" />
+              <div className="mb-4 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-indigo-100 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500">
+                <Smartphone size={24} />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">
+                iOS · Android · React · Node
+              </span>
+              <h4 className="text-xl font-black mb-2 text-slate-900">Apps &amp; Web</h4>
+              <p className="text-slate-500 leading-relaxed font-medium text-sm">
+                Native mobile apps and scalable web platforms. Built to support and extend XR deployments — companion apps, dashboards, control interfaces.
+              </p>
+            </motion.div>
+
+          </div>
         </div>
       </div>
     </section>
