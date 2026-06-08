@@ -1,10 +1,10 @@
 
 import React from 'react';
-import pucpLogo from '../assets/logos/PUCP-LOGO.png';
-import ueLogo from '../assets/logos/UE-LOGO.png';
-import avatarLogo from '../assets/logos/GRUPOAVATOR-LOGO.jpg';
-import metaLogo from '../assets/logos/meta-quest-1.svg';
-import androidXrLogo from '../assets/logos/Android-XR-logo.jpg';
+import pucpLogo from '../assets/LOGOS/PUCP-LOGO.png';
+import ueLogo from '../assets/LOGOS/UE-LOGO.png';
+import avatarLogo from '../assets/LOGOS/GRUPOAVATOR-LOGO.jpg';
+import metaLogo from '../assets/LOGOS/meta-quest-1.svg';
+import androidXrLogo from '../assets/LOGOS/Android-XR-logo.jpg';
 
 const affiliations = [
   { name: 'PUCP',              src: pucpLogo,       whiteBg: false },
