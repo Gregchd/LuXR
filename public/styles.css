@@ -342,9 +342,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
 }
 
-.hero-h1 .ln { overflow: hidden; display: block; }
+.hero-h1 .ln { overflow: hidden; display: block; padding-bottom: 0.4em; margin-bottom: -0.4em; }
 .hero-h1 .ln span {
   display: block;
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
   transform: translateY(105%);
   transition: transform .9s cubic-bezier(.4,0,.2,1);
 }
@@ -578,7 +580,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--ff-display);
   font-size: clamp(40px, 5vw, 70px);
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.1;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
   background: var(--grad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

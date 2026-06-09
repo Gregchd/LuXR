@@ -323,7 +323,7 @@ function Mission() {
         <div className="stats">
           {[
             { fig: '6+',    lbl: 'XR experiences shipped' },
-            { fig: '3',     lbl: 'Countries deployed' },
+            { fig: '15+',     lbl: 'Events deployed' },
             { fig: '1,000+',lbl: 'Users in XR' },
             { fig: '1',     lbl: 'Epic-authorized UE5 instructor' },
           ].map(({ fig, lbl }) => (
