@@ -284,6 +284,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   will-change: transform;
 }
 
+.hero-illo {
+  position: absolute;
+  top: 0; right: 0;
+  z-index: -1;
+  pointer-events: none;
+  width: min(64%, 920px);
+  height: 100%;
+  opacity: .5;
+  mask-image: radial-gradient(120% 90% at 78% 42%, #000 18%, transparent 72%);
+  -webkit-mask-image: radial-gradient(120% 90% at 78% 42%, #000 18%, transparent 72%);
+}
+.hero-illo svg { width: 100%; height: 100%; }
+@media (max-width: 760px) {
+  .hero-illo { opacity: .3; width: 100%; }
+}
+
 .hero-grain {
   position: absolute;
   inset: 0;
@@ -297,7 +313,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero-inner {
   padding-top: 120px;
-  padding-bottom: 60px;
+  padding-bottom: 120px;
   width: 100%;
 }
 
