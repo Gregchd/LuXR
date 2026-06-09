@@ -24,6 +24,12 @@
   <script src="public/image-slot.js"></script>
 
   <script type="text/babel">
+  // Helper to resolve asset paths dynamically
+  const resolveAsset = (path) => {
+    const isStaticRoot = !!document.querySelector('link[href^="public/"]');
+    return isStaticRoot ? path : path.replace(/^public\//, '/');
+  };
+
   // ─── Tweaks panel ────────────────────────────────────────────
   const DEFAULTS = {
     theme: 'Daylight',
@@ -147,25 +153,15 @@
   }
 
   function Logo({ height = 26, variant = 'white' }) {
-    const fill = variant === 'blue' ? '#1A40D1' : '#EEF1FB';
+    const filter = variant === 'white'
+      ? 'brightness(0) invert(1)'
+      : 'none';
     return (
-      <svg height={height} viewBox="0 0 1165 381" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="matrix(1.363297,0,0,1.363297,-857.118171,315.326322) translate(0,-1340)">
-          <path d="M2261 1075 C2261 1074 2260 1073 2259 1073 C2259 1073 2258 1074 2258 1075 C2251 1101 2230 1122 2204 1129 C2203 1129 2202 1130 2202 1130 C2202 1131 2203 1132 2204 1132 C2230 1138 2251 1159 2258 1186 C2258 1187 2259 1187 2259 1187 C2260 1187 2261 1187 2261 1186 C2268 1159 2289 1138 2315 1132 C2316 1132 2316 1131 2316 1130 C2316 1130 2316 1129 2315 1129 C2289 1122 2268 1101 2261 1075 Z" fill={fill}/>
-        </g>
-        <g transform="matrix(1.07182,0,0,1.07182,-106.605639,257.62117) translate(0,-1340)">
-          <path d="M1171 1763 L1171 1514 L1241 1514 L1241 1707 L1360 1707 L1360 1763 Z" fill={fill}/>
-        </g>
-        <g transform="matrix(1.07182,0,0,1.07182,-106.605639,257.62117) translate(0,-1340)">
-          <path d="M1500 1763 C1463 1763 1434 1753 1414 1733 C1393 1713 1383 1689 1383 1652 L1383 1514 L1453 1514 L1453 1650 C1453 1671 1457 1682 1466 1691 C1474 1700 1486 1705 1500 1705 C1515 1705 1527 1700 1535 1691 C1543 1682 1547 1671 1547 1650 L1547 1514 L1617 1514 L1617 1652 C1617 1689 1606 1713 1586 1733 C1565 1753 1536 1763 1500 1763 Z" fill={fill}/>
-        </g>
-        <g transform="matrix(1.07182,0,0,1.07182,-106.605639,257.62117) translate(0,-1340)">
-          <path d="M1766 1686 L1716 1763 L1635 1763 L1726 1637 L1639 1514 L1718 1514 L1768 1586 L1817 1514 L1893 1514 L1807 1634 L1899 1763 L1818 1763 Z" fill={fill}/>
-        </g>
-        <g transform="matrix(1.07182,0,0,1.07182,-106.605639,257.62117) translate(0,-1340)">
-          <path d="M1986 1697 L1986 1763 L1916 1763 L1916 1514 L2027 1514 C2063 1514 2091 1522 2111 1539 C2130 1555 2140 1577 2140 1606 C2140 1625 2135 1641 2126 1654 C2118 1667 2106 1677 2091 1684 L2145 1763 L2070 1763 L2024 1697 Z M1986 1642 L2025 1642 C2040 1642 2051 1639 2058 1633 C2065 1626 2069 1617 2069 1606 C2069 1594 2065 1585 2058 1579 C2051 1573 2040 1569 2025 1569 Z" fill={fill}/>
-        </g>
-      </svg>
+      <img
+        src={resolveAsset('public/logo.svg')}
+        alt="LuXR"
+        style={{ height: height + 'px', width: 'auto', filter, display: 'block' }}
+      />
     );
   }
 
@@ -407,7 +403,7 @@
           </div>
           <div className="mission-model reveal">
             <model-viewer
-              src="public/models/aribalo.glb"
+              src={resolveAsset('public/models/aribalo.glb')}
               alt="3D model rotating"
               auto-rotate
               auto-rotate-delay="0"
